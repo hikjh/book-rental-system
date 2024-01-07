@@ -4,3 +4,11 @@ spring:
     group:
       local:
         - local-database
+
+
+client:
+  book:
+    url: "http://apis.data.go.kr/4050000/libnewbk/getLibnewbk"
+    serviceKey: "nsHHcQdK3vL4a2RLgOF6Glatg8kn3PqRNCCMEkOf%2BVaQMEEBq2KFslXDYLwnsIN7wPLUJYYaJOjOdNZ%2FNHYCmw%3D%3D"
+    pageNo: "1"
+    numOfRows: "500"
