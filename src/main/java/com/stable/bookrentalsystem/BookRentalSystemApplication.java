@@ -5,8 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-@EnableFeignClients
+
 @EnableJpaAuditing
+@EnableFeignClients
 @SpringBootApplication
 public class BookRentalSystemApplication {
 
