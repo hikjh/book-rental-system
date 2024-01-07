@@ -1,4 +1,4 @@
-package com.stable.bookrentalsystem.repository;
+package com.stable.bookrentalsystem.repository.book;
 
 import com.stable.bookrentalsystem.domain.book.entity.Book;
 

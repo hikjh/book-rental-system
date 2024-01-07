@@ -3,7 +3,7 @@ package com.stable.bookrentalsystem.service.book;
 import com.stable.bookrentalsystem.client.book.BookInfoFeignClient;
 import com.stable.bookrentalsystem.client.book.dto.BookInfoResponse;
 import com.stable.bookrentalsystem.domain.book.entity.Book;
-import com.stable.bookrentalsystem.repository.BulkInsertRepository;
+import com.stable.bookrentalsystem.repository.book.BulkInsertRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

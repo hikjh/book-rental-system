@@ -1,7 +1,6 @@
 package com.stable.bookrentalsystem.repository.book;
 
 import com.stable.bookrentalsystem.domain.book.entity.Book;
-import com.stable.bookrentalsystem.repository.BulkInsertRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
