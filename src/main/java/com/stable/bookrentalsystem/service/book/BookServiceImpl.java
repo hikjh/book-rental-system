@@ -39,8 +39,6 @@ public class BookServiceImpl implements BookService {
     public int registerBook() {
 
         BookInfoResponse bookInfoResponse = bookInfoFeignClient.getBookInfo(serviceKey, pageNo, numOfRows);
-        log.info("### bookInfoResponse : {}", bookInfoResponse);
-
         List<Book> books = mapToBookDomain(bookInfoResponse);
         log.info("### book size : {}", books.size());
 
