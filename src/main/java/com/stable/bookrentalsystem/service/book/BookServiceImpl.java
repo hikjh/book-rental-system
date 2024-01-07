@@ -3,10 +3,14 @@ package com.stable.bookrentalsystem.service.book;
 import com.stable.bookrentalsystem.client.book.BookInfoFeignClient;
 import com.stable.bookrentalsystem.client.book.dto.BookInfoResponse;
 import com.stable.bookrentalsystem.domain.book.entity.Book;
+import com.stable.bookrentalsystem.repository.book.BookRepository;
 import com.stable.bookrentalsystem.repository.book.BulkInsertRepository;
+import com.stable.bookrentalsystem.web.dto.book.BookResponseDTO;
+import com.stable.bookrentalsystem.web.dto.book.BookSearchCond;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +25,7 @@ public class BookServiceImpl implements BookService {
 
     private final BookInfoFeignClient bookInfoFeignClient;
     private final BulkInsertRepository bulkInsertRepository;
+    private final BookRepository bookRepository;
 
     @Value("${client.book.serviceKey}")
     private String serviceKey;
@@ -41,6 +46,12 @@ public class BookServiceImpl implements BookService {
 
         bulkInsertRepository.bulkInsert(books);
         return books.size();
+    }
+
+    @Override
+    public List<BookResponseDTO> searchBook(BookSearchCond cond, Pageable pageable) {
+        log.info("### cond : {}", cond);
+        return bookRepository.findAllBooks(cond, pageable);
     }
 
     private List<Book> mapToBookDomain(BookInfoResponse bookInfoResponse) {
