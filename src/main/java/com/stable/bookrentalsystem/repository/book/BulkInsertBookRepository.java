@@ -24,10 +24,7 @@ public class BulkInsertBookRepository implements BulkInsertRepository {
     public void bulkInsert(List<Book> books) {
 
         String sql = createBulkInsertSQL();
-        log.info("### sql : {}", sql);
-
         SqlParameterSource[] params = mapToBookSQLParameterSource(books);
-        log.info("### params : {}", params);
 
         template.batchUpdate(sql, params);
     }
