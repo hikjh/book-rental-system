@@ -5,5 +5,8 @@ spring:
     password:
     driver-class-name: org.h2.Driver
   jpa:
+    properties:
+      hibernate:
+        format_sql: true
     hibernate:
       ddl-auto: create
