@@ -29,12 +29,16 @@ public class Member extends BaseTimeEntity {
         this.point = point;
     }
 
-    public static Member of(String name, String email, String password) {
+    public static Member createMember(String name, String email, String password) {
         return Member.builder()
                 .name(name)
                 .email(email)
                 .password(password)
                 .point(10)
                 .build();
+    }
+
+    public void pointUp(int point) {
+        this.point += point;
     }
 }
