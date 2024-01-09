@@ -43,7 +43,11 @@ public class Rental extends BaseTimeEntity {
         this.rentalStatus = rentalStatus;
     }
 
-    public static Rental of(Member member, Book book) {
+    public static Rental createRental(Member member, Book book) {
+
+        member.pointUp(5);
+        book.validateIsRented();
+
         return Rental.builder()
                 .member(member)
                 .book(book)

@@ -32,7 +32,7 @@ public class Book extends BaseTimeEntity {
         this.isRented = isRented;
     }
 
-    public static Book of(Long id, String title, String author, String publisher, String publishYear) {
+    public static Book createBook(Long id, String title, String author, String publisher, String publishYear) {
         return Book.builder()
                 .id(id)
                 .title(title)
@@ -41,5 +41,11 @@ public class Book extends BaseTimeEntity {
                 .publishYear(publishYear)
                 .isRented(false)
                 .build();
+    }
+
+    public void validateIsRented() {
+        if (isRented) {
+            throw new IllegalStateException("이미 대여된 도서입니다.");
+        }
     }
 }
