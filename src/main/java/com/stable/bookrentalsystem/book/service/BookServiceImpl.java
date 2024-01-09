@@ -2,11 +2,11 @@ package com.stable.bookrentalsystem.book.service;
 
 import com.stable.bookrentalsystem.book.client.BookInfoFeignClient;
 import com.stable.bookrentalsystem.book.client.dto.BookInfoResponse;
+import com.stable.bookrentalsystem.book.controller.dto.BookResponseDTO;
+import com.stable.bookrentalsystem.book.controller.dto.BookSearchCond;
 import com.stable.bookrentalsystem.book.domain.entity.Book;
 import com.stable.bookrentalsystem.book.repository.BookRepository;
 import com.stable.bookrentalsystem.book.repository.BulkInsertRepository;
-import com.stable.bookrentalsystem.book.controller.dto.BookResponseDTO;
-import com.stable.bookrentalsystem.book.controller.dto.BookSearchCond;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static com.stable.bookrentalsystem.book.domain.entity.Book.of;
+import static com.stable.bookrentalsystem.book.domain.entity.Book.createBook;
 
 @Slf4j
 @Service
@@ -54,6 +54,6 @@ public class BookServiceImpl implements BookService {
 
     private List<Book> mapToBookDomain(BookInfoResponse bookInfoResponse) {
         return bookInfoResponse.items().stream()
-                .map(bookInfo -> of(Long.valueOf(bookInfo.no()), bookInfo.title(), bookInfo.author(), bookInfo.publisher(), bookInfo.publishYear())).toList();
+                .map(bookInfo -> createBook(Long.valueOf(bookInfo.no()), bookInfo.title(), bookInfo.author(), bookInfo.publisher(), bookInfo.publishYear())).toList();
     }
 }
